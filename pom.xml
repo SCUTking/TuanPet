@@ -12,6 +12,7 @@
 
     <modules>
         <module>TuanPeg-user</module>
+        <module>TuanPeg-common</module>
     </modules>
 
 
