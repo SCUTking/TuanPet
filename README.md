@@ -1,5 +1,5 @@
 # TuanPeg
-##环境配置
+## 环境配置
 springboot 2.7.9
 
 jdk 8(java 8)
