@@ -13,6 +13,8 @@
     <modules>
         <module>TuanPeg-user</module>
         <module>TuanPeg-common</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
     </modules>
 
 
