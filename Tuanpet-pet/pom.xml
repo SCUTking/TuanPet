@@ -9,26 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tuanpet</groupId>
-    <artifactId>TuanPet-user</artifactId>
+    <artifactId>Tuanpet-pet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>TuanPet-user</name>
-    <description>TuanPet-user</description>
+    <name>Tuanpet-pet</name>
+    <description>Tuanpet-pet</description>
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <spring-cloud.version>2021.0.6</spring-cloud.version>
     </properties>
     <dependencies>
-<!--        公共依赖-->
-        <dependency>
-            <groupId>com.tuanpet</groupId>
-            <artifactId>TuanPet-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-
-
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

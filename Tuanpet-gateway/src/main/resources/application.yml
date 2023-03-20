@@ -1,0 +1,38 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user_route
+          uri: lb://tuanpet-user
+          predicates:
+            - Path=/user/**
+#          filters:
+#            - RewritePath=/user/(?<segment>/?.*),/$\{segment}
+
+        - id: user_route
+          uri: lb://tuanpet-user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - RewritePath=/api/user/(?<segment>/?.*),/$\{segment}
+
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*), /renren-fast/$\{segment}
+#        - id: user_route
+#          uri: lb://tuanpet-user
+#          predicates:
+#            - Path=/api/product/**
+#          filters:
+#            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
+#        - id: third-party_route
+#          uri: lb://gulimall-third-party
+#          predicates:
+#            - Path=/api/thirdparty/**
+#          filters:
+#            - RewritePath=/api/thirdparty/(?<segment>/?.*),/$\{segment}
+

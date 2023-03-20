@@ -105,18 +105,8 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
-		<!-- oracle驱动 -->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${oracle.version}</version>
-		</dependency>
-		<!-- sqlserver驱动 -->
-		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>${mssql.version}</version>
-		</dependency>
+
+
 		<!-- postgresql驱动 -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -127,6 +117,11 @@
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
 			<version>${mongo.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -143,7 +138,7 @@
 		<repository>
 			<id>public</id>
 			<name>aliyun nexus</name>
-			<url>https://maven.aliyun.com/repository/public/</url>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -153,7 +148,7 @@
 		<pluginRepository>
 			<id>public</id>
 			<name>aliyun nexus</name>
-			<url>https://maven.aliyun.com/repository/public/</url>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>

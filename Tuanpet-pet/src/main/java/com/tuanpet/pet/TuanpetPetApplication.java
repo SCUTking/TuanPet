@@ -1,13 +1,13 @@
-package com.tuanpeg.tuanpegcommon;
+package com.tuanpet.pet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TuanPegCommonApplication {
+public class TuanpetPetApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TuanPegCommonApplication.class, args);
+        SpringApplication.run(TuanpetPetApplication.class, args);
     }
 
 }
