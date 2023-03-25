@@ -17,7 +17,7 @@
         <module>renren-generator</module>
         <module>Tuanpet-reminder</module>
         <module>Tuanpet-pet</module>
-        <module>Tuanpet-gateway</module>
+        <module>TuanPet-gateway</module>
         <module>Tuanpet-thirdParty</module>
         <module>TuanPet-association</module>
     </modules>
