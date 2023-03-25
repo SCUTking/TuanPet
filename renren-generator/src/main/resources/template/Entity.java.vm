@@ -12,7 +12,7 @@ import lombok.Data;
 
 /**
  * ${comments}
- * 
+ *
  * @author ${author}
  * @email ${email}
  * @date ${datetime}
@@ -29,7 +29,8 @@ public class ${className}Entity implements Serializable {
 	#if($column.columnName == $pk.columnName)
 @TableId
 	#end
-private $column.attrType $column.attrname;
+##private $column.attrType $column.attrname;//驼峰会全部变成小写
+private $column.attrType $column.columnName;//与数据库中的字段保持一模一样
 #end
 
 }

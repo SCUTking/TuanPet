@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tuanpet.pet.dao.PetDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.tuanpet.pet.entity.PetEntity" id="petMap">
+        <result property="petId" column="petId"/>
+        <result property="petName" column="petName"/>
+        <result property="petPhoto" column="petPhoto"/>
+        <result property="petType" column="petType"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="weight" column="weight"/>
+        <result property="address" column="address"/>
+        <result property="birthday" column="birthday"/>
+        <result property="dateOfArrival" column="dateOfArrival"/>
+        <result property="isSterilization" column="isSterilization"/>
+        <result property="createdAt" column="createdAt"/>
+        <result property="updatedAt" column="updatedAt"/>
+    </resultMap>
+
+
+</mapper>

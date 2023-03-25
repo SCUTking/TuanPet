@@ -39,8 +39,9 @@ public class TokenFilter implements GlobalFilter, Ordered {
     /**
      * 制定好放行的路径,不用进行token检查的
      * */
-    // TODO 怎么放行后台管理系统的请求
-    public static final List<String> ALLOW_URL = Arrays.asList("/user/login");
+
+    public static final List<String> ALLOW_URL = Arrays.asList("/user/login","/association/save","" +
+            "/association/update","/association/deleteById");
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -60,6 +61,7 @@ public class TokenFilter implements GlobalFilter, Ordered {
         String path = request.getURI().getPath();
         log.info("path:"+path);
         //不能用**表示全部后台管理的路径，用path.contains("/api/")区分
+        //放行后台管理系统的请求
         if(ALLOW_URL.contains(path)||path.contains("/api/")){
             //放行
             return chain.filter(exchange);
@@ -111,3 +113,4 @@ public class TokenFilter implements GlobalFilter, Ordered {
     }
 
 }
+

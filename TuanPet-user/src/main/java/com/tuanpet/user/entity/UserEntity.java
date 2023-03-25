@@ -75,10 +75,10 @@ public class UserEntity implements Serializable {
 	/**
 	 *创建时间
 	 */
-	private Date createdat;
+	private Date createdAt;
 	/**
 	 *修改时间
 	 */
-	private Date updatedat;
+	private Date updatedAt;
 
 }

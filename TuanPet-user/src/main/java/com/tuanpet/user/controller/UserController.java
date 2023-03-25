@@ -67,8 +67,8 @@ public class UserController {
     @RequestMapping("/save")
     //@RequiresPermissions("user:user:save")
     public R save(@RequestBody UserEntity user){
-        user.setCreatedat(new Date());
-        user.setUpdatedat(new Date());
+        user.setCreatedAt(new Date());
+        user.setUpdatedAt(new Date());
         log.info(user.toString());
         userService.save(user);
 
@@ -81,8 +81,7 @@ public class UserController {
     @RequestMapping("/update")
     //@RequiresPermissions("user:user:update")
     public R update(@RequestBody UserEntity user){
-        user.setCreatedat(new Date());
-        user.setUpdatedat(new Date());
+        user.setUpdatedAt(new Date());
         log.info(user.toString());
         userService.updateById(user);
 

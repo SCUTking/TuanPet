@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tuanpet.association.dao.AssociationDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.tuanpet.association.entity.AssociationEntity" id="associationMap">
+        <result property="associationId" column="associationId"/>
+        <result property="classify" column="classify"/>
+        <result property="area" column="area"/>
+        <result property="img" column="img"/>
+        <result property="createdAt" column="createdAt"/>
+        <result property="updatedAt" column="updatedAt"/>
+    </resultMap>
+
+
+</mapper>

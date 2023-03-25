@@ -2,19 +2,60 @@ spring:
   cloud:
     gateway:
       routes:
+        #        用戶路由
         - id: user_route
           uri: lb://tuanpet-user
           predicates:
             - Path=/user/**
-#          filters:
-#            - RewritePath=/user/(?<segment>/?.*),/$\{segment}
 
-        - id: user_route
+        - id: user_back_route
           uri: lb://tuanpet-user
           predicates:
             - Path=/api/user/**
           filters:
             - RewritePath=/api/user/(?<segment>/?.*),/$\{segment}
+        #        寵物路由
+        - id: pet_route
+          uri: lb://tuanpet-pet
+          predicates:
+            - Path=/pet/**
+
+        - id: pet_back_route
+          uri: lb://tuanpet-pet
+          predicates:
+            - Path=/api/pet/**
+          filters:
+            - RewritePath=/api/pet/(?<segment>/?.*),/$\{segment}
+        #        提醒路由
+        - id: reminder_route
+          uri: lb://tuanpet-reminder
+          predicates:
+            - Path=/reminder/**
+
+        - id: reminder_back_route
+          uri: lb://tuanpet-reminder
+          predicates:
+            - Path=/api/reminder/**
+          filters:
+            - RewritePath=/api/reminder/(?<segment>/?.*),/$\{segment}
+
+        #        社群路由
+        - id: association_route
+          uri: lb://tuanpet-association
+          predicates:
+            - Path=/association/**
+
+        - id: association_back_route
+          uri: lb://tuanpet-association
+          predicates:
+            - Path=/api/association/**
+          filters:
+            - RewritePath=/api/association/(?<segment>/?.*),/$\{segment}
+        #        第三方路由
+        - id: reminder_back_route
+          uri: lb://tuanpet-thirdParty
+          predicates:
+            - Path=/thirdParty/getUploadSignature
 
         - id: admin_route
           uri: lb://renren-fast

@@ -13,13 +13,13 @@
         <result property="birthday" column="birthday"/>
         <result property="level" column="level"/>
         <result property="sex" column="sex"/>
-        <result property="backgroundImage" column="background_image"/>
+        <result property="backgroundImage" column="backgroundImage"/>
         <result property="city" column="city"/>
         <result property="address" column="address"/>
         <result property="integration" column="integration"/>
         <result property="openid" column="openid"/>
-        <result property="createdat" column="createdAt"/>
-        <result property="updatedat" column="updatedAt"/>
+        <result property="createdAt" column="createdAt"/>
+        <result property="updatedAt" column="updatedAt"/>
     </resultMap>
 
 

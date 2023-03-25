@@ -1,13 +1,13 @@
 <template>
   <el-dialog
-    :title="!dataForm.${pk.attrname} ? '新增' : '修改'"
+    :title="!dataForm.${pk.columnName} ? '新增' : '修改'"
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
-    <el-form-item label="${column.comments}" prop="${column.attrname}">
-      <el-input v-model="dataForm.${column.attrname}" placeholder="${column.comments}"></el-input>
+    <el-form-item label="${column.comments}" prop="${column.columnName}">
+      <el-input v-model="dataForm.${column.columnName}" placeholder="${column.comments}"></el-input>
     </el-form-item>
 #end
 #end
@@ -27,9 +27,9 @@
         dataForm: {
 #foreach($column in $columns)
 #if($column.columnName == $pk.columnName)
-          ${column.attrname}: 0,
+          ${column.columnName}: 0,
 #else
-          ${column.attrname}: ''#if($velocityCount != $columns.size()),#end
+          ${column.columnName}: ''#if($velocityCount != $columns.size()),#end
 
 #end
 #end
@@ -37,7 +37,7 @@
         dataRule: {
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
-          ${column.attrname}: [
+          ${column.columnName}: [
             { required: true, message: '${column.comments}不能为空', trigger: 'blur' }
           ]#if($velocityCount != $columns.size()),#end
 
@@ -48,20 +48,20 @@
     },
     methods: {
       init (id) {
-        this.dataForm.${pk.attrname} = id || 0
+        this.dataForm.${pk.columnName} = id || 0
         this.visible = true
         this.$nextTick(() => {
           this.$refs['dataForm'].resetFields()
-          if (this.dataForm.${pk.attrname}) {
+          if (this.dataForm.${pk.columnName}) {
             this.$http({
-              url: #[[this.$http.adornUrl]]#(`/${moduleName}/${pathName}/info/#[[$]]#{this.dataForm.${pk.attrname}}`),
+              url: #[[this.$http.adornUrl]]#(`/${moduleName}/${pathName}/info/#[[$]]#{this.dataForm.${pk.columnName}}`),
               method: 'get',
               #[[params: this.$http.adornParams()]]#
             }).then(({data}) => {
               if (data && data.code === 0) {
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
-                this.dataForm.${column.attrname} = data.${classname}.${column.attrname}
+                this.dataForm.${column.columnName} = data.${classname}.${column.columnName}
 #end
 #end
               }
@@ -74,14 +74,14 @@
         #[[this.$refs['dataForm'].validate((valid) => {]]#
           if (valid) {
             this.$http({
-              url: #[[this.$http.adornUrl]]#(`/${moduleName}/${pathName}/${!this.dataForm.${pk.attrname} ? 'save' : 'update'}`),
+              url: #[[this.$http.adornUrl]]#(`/${moduleName}/${pathName}/${!this.dataForm.${pk.columnName} ? 'save' : 'update'}`),
               method: 'post',
               #[[data: this.$http.adornData({]]#
 #foreach($column in $columns)
 #if($column.columnName == $pk.columnName)
-                '${column.attrname}': this.dataForm.${column.attrname} || undefined,
+                '${column.columnName}': this.dataForm.${column.columnName} || undefined,
 #else
-                '${column.attrname}': this.dataForm.${column.attrname}#if($velocityCount != $columns.size()),#end
+                '${column.columnName}': this.dataForm.${column.columnName}#if($velocityCount != $columns.size()),#end
 
 #end
 #end

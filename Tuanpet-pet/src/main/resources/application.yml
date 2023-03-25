@@ -1,0 +1,26 @@
+spring:
+  redis:
+    host: 43.140.198.154
+    port: 6379
+    password: 123456
+    database: 0
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://43.140.198.154:3306/tuanpet-pet?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 852456jkl
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: tuanpet-pet
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.x  ml
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: false
+server:
+  port: 6000

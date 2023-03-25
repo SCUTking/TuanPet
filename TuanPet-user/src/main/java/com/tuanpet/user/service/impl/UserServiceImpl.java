@@ -74,8 +74,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
             SnowflakeIdWorker snowflakeIdWorker = new SnowflakeIdWorker(0, 0);
             userEntity=new UserEntity();
             userEntity.setOpenid(socialUser.getOpenid());
-            userEntity.setCreatedat(new Date());
-            userEntity.setUpdatedat(new Date());
+            userEntity.setCreatedAt(new Date());
+            userEntity.setUpdatedAt(new Date());
             log.info(userEntity.toString());
             save(userEntity);
         }

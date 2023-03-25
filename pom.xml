@@ -15,7 +15,11 @@
         <module>TuanPet-common</module>
         <module>renren-fast</module>
         <module>renren-generator</module>
+        <module>Tuanpet-reminder</module>
+        <module>Tuanpet-pet</module>
         <module>Tuanpet-gateway</module>
+        <module>Tuanpet-thirdParty</module>
+        <module>TuanPet-association</module>
     </modules>
 
 

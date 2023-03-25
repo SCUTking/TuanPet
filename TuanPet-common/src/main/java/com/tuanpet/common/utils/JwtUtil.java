@@ -31,7 +31,6 @@ public class JwtUtil {
         map.put("appid","wx72cce02fe11dc39f");
         map.put("secret","9240e85c149b9707884611f4c6e9cbce");
         map.put("js_code",code);
-        log.info("code:"+code);
         map.put("grant_type","authorization_code");
 
         //获取openId，session_key
@@ -42,12 +41,9 @@ public class JwtUtil {
         //    "unionid": "o9XLI6E9JQ_iNaoJSDquzZB3QfIg"}
         //}
         //请求发送成功
-        log.info(post.toString());
         SocialUser socialUser=null;
         if(post.getStatusLine().getStatusCode()==200){
-            log.info(post.getEntity().toString());
             String json = EntityUtils.toString(post.getEntity());
-            log.info(json);
             socialUser= JSON.parseObject(json, SocialUser.class);
         }
         return socialUser;
