@@ -19,6 +19,7 @@
         <module>Tuanpet-pet</module>
         <module>Tuanpet-gateway</module>
         <module>Tuanpet-thirdParty</module>
+        <module>TuanPet-gateway</module>
         <module>TuanPet-association</module>
     </modules>
 
