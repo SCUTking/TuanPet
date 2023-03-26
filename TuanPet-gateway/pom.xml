@@ -13,6 +13,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>TuanPet-gateway</name>
     <description>TuanPet-gateway</description>
+
+    <packaging>jar</packaging>
+
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.6</spring-cloud.version>
