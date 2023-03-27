@@ -57,6 +57,10 @@ public class PetEntity implements Serializable {
 	 */
 	private String petPhoto;
 	/**
+	 * 头像抠图
+	 */
+	private String imageMatting;
+	/**
 	 * 品种
 	 */
 	private String petType;

@@ -8,6 +8,7 @@
         <result property="petId" column="petId"/>
         <result property="petName" column="petName"/>
         <result property="petPhoto" column="petPhoto"/>
+        <result property="imageMatting" column="imageMatting"/>
         <result property="petType" column="petType"/>
         <result property="age" column="age"/>
         <result property="sex" column="sex"/>
