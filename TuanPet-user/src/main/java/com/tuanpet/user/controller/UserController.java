@@ -8,6 +8,7 @@ import com.tuanpet.user.entity.UserEntity;
 import com.tuanpet.user.service.UserService;
 
 
+import com.tuanpet.user.vo.ReqUser;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,9 +110,9 @@ public class UserController {
     @GetMapping("/login")
     public R login(@RequestParam String code) throws Exception {
 
-        String token = userService.loginToGetToken(code);
+        ReqUser reqUser = userService.loginToGetToken(code);
 
-        return  R.ok().put("token",token);
+        return  R.ok().put("token",reqUser.getToken()).put("userId",reqUser.getUserId());
 
     }
 

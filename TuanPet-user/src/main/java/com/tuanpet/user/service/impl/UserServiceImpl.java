@@ -3,6 +3,7 @@ package com.tuanpet.user.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.tuanpet.common.commonVo.SocialUser;
 import com.tuanpet.common.utils.*;
+import com.tuanpet.user.vo.ReqUser;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +40,14 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
     }
 
     @Override
-    public String loginToGetToken(String code) throws Exception {
+    public ReqUser loginToGetToken(String code) throws Exception {
 
         SocialUser socialUser = JwtUtil.getSocialUser(code);
         String openid = socialUser.getOpenid();
         String session_key=socialUser.getSession_key();
 
+        //下面有三处地方使用到
+        LambdaQueryWrapper<UserEntity> userEntityLambdaQueryWrapper = new LambdaQueryWrapper<>();
 
         // 查询redis是否有token
 
@@ -54,19 +57,27 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
             //如果有直接返回token，并延迟token时间
             //RedisConstants.LOGIN_USER_TTL, TimeUnit.MINUTES   为了测试方便不设置过期时间
             redisTemplate.opsForValue().set(key,oldToken);
-            return oldToken;
+
+            userEntityLambdaQueryWrapper.eq(UserEntity::getOpenid,openid);
+            UserEntity one = getOne(userEntityLambdaQueryWrapper);
+
+            return new ReqUser(one.getUserId(),oldToken);
         }
         //如果没有,说明token过期，或者没有注册过,重新生成token
 
 
         String token = JwtUtil.getToken(socialUser.getOpenid(), socialUser.getSession_key());
+        int userId;
+
 
         //查询数据库
         UserEntity userEntity =null;
-        LambdaQueryWrapper<UserEntity> userEntityLambdaQueryWrapper = new LambdaQueryWrapper<>();
+
         userEntityLambdaQueryWrapper.eq(UserEntity::getOpenid,openid);
-        if(count(userEntityLambdaQueryWrapper)>0){
+        UserEntity one = getOne(userEntityLambdaQueryWrapper);
+        if(one!=null){
             //存在
+            userId= one.getUserId();
         }
         else{
             //不存在
@@ -78,6 +89,11 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
             userEntity.setUpdatedAt(new Date());
             log.info(userEntity.toString());
             save(userEntity);
+
+            //获取用户Id
+            userEntityLambdaQueryWrapper.eq(UserEntity::getOpenid,socialUser.getOpenid());
+            UserEntity user = getOne(userEntityLambdaQueryWrapper);
+            userId=user.getUserId();
         }
 
 
@@ -86,7 +102,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
         redisTemplate.opsForValue().set(key,token);
 
 
-        return token;
+        return new ReqUser(userId,token);
     }
 
 
