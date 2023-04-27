@@ -82,7 +82,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
 
 
         // 写入redis缓存
-        redisTemplate.opsForValue().set(key,token,RedisConstants.LOGIN_USER_TTL, TimeUnit.MINUTES);
+//        redisTemplate.opsForValue().set(key,token,RedisConstants.LOGIN_USER_TTL, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(key,token);
 
 
         return token;

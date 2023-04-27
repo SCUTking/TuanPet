@@ -50,6 +50,14 @@
             <version>4.5.7</version>
         </dependency>
 
+<!--动物抠图-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>imageseg20191230</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+
+
         <dependency>
             <groupId>com.tuanpet</groupId>
             <artifactId>TuanPet-common</artifactId>

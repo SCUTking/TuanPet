@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 
+import com.tuanpet.pet.feign.ImageMattingFeign;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,9 @@ import com.tuanpet.common.utils.R;
 public class PetController {
     @Autowired
     private PetService petService;
+
+    @Autowired
+    private ImageMattingFeign imageMattingFeign;
 
     /**
      * 列表
@@ -86,6 +90,9 @@ public class PetController {
     @RequestMapping("/save")
     //@RequiresPermissions("pet:pet:save")
     public R save(@RequestBody PetEntity pet){
+        //调用第三方的服务
+        String imageMatting = imageMattingFeign.GetImageMatting(pet.getPetPhoto());
+        pet.setImageMatting(imageMatting);
         pet.setCreatedAt(new Date());
         pet.setUpdatedAt(new Date());
 		petService.save(pet);

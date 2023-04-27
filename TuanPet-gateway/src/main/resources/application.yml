@@ -55,7 +55,7 @@ spring:
         - id: reminder_back_route
           uri: lb://tuanpet-thirdParty
           predicates:
-            - Path=/thirdParty/getUploadSignature
+            - Path=/thirdParty/**
 
         - id: admin_route
           uri: lb://renren-fast
