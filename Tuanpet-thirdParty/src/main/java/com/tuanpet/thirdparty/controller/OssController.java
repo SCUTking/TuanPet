@@ -51,11 +51,13 @@ public class OssController {
 
         Map<String, String> respMap=null;
         try {
-            long expireTime = 30;
+            long expireTime = 100;
             long expireEndTime = System.currentTimeMillis() + expireTime * 1000;
             Date expiration = new Date(expireEndTime);
             PolicyConditions policyConds = new PolicyConditions();
+            //文件大小限制
             policyConds.addConditionItem(PolicyConditions.COND_CONTENT_LENGTH_RANGE, 0, 1048576000);
+            //文件前缀匹配   必须为dir开头
             policyConds.addConditionItem(MatchMode.StartWith, PolicyConditions.COND_KEY, dir);
 
             String postPolicy = ossClient.generatePostPolicy(expiration, policyConds);

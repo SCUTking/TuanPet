@@ -20,6 +20,7 @@
         <module>TuanPet-gateway</module>
         <module>Tuanpet-thirdParty</module>
         <module>TuanPet-association</module>
+        <module>TuanPet-activityThought</module>
     </modules>
 
 

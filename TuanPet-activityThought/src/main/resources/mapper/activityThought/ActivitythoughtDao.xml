@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tuanpet.activitythought.dao.ActivitythoughtDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.tuanpet.activitythought.entity.ActivitythoughtEntity" id="activitythoughtMap">
+        <result property="activityThoughtId" column="activityThoughtId"/>
+        <result property="userId" column="userId"/>
+        <result property="activityId" column="activityId"/>
+        <result property="activityName" column="activityName"/>
+        <result property="content" column="content"/>
+        <result property="classify" column="classify"/>
+        <result property="favoriteCount" column="favoriteCount"/>
+        <result property="commentCount" column="commentCount"/>
+        <result property="photos" column="photos"/>
+        <result property="videos" column="videos"/>
+        <result property="location" column="location"/>
+        <result property="createdAt" column="createdAt"/>
+        <result property="updatedAt" column="updatedAt"/>
+    </resultMap>
+
+
+</mapper>

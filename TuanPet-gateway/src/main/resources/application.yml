@@ -39,6 +39,19 @@ spring:
           filters:
             - RewritePath=/api/reminder/(?<segment>/?.*),/$\{segment}
 
+        #        活动感想路由
+        - id: reminder_route
+          uri: lb://tuanpet-activityThought
+          predicates:
+            - Path=/activityThought/**
+
+        - id: activityThought_back_route
+          uri: lb://tuanpet-activityThought
+          predicates:
+            - Path=/api/activityThought/**
+          filters:
+            - RewritePath=/api/activityThought/(?<segment>/?.*),/$\{segment}
+
         #        社群路由
         - id: association_route
           uri: lb://tuanpet-association
