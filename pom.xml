@@ -23,6 +23,7 @@
         <module>TuanPet-activityThought</module>
         <module>TuanPet-activity</module>
         <module>TuanPet-interaction</module>
+        <module>TuanPet-interaction/webSocket</module>
     </modules>
 
 
