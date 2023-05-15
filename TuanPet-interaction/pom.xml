@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>TuanPet-interaction</name>
     <description>TuanPet-interaction</description>
-    <packaging>pom</packaging>
+
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.7</spring-cloud.version>
@@ -74,8 +74,5 @@
     </build>
 
 
-    <modules>
-        <module>webSocket</module>
-    </modules>
 
 </project>
