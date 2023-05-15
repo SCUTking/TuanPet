@@ -21,6 +21,8 @@
         <module>Tuanpet-thirdParty</module>
         <module>TuanPet-association</module>
         <module>TuanPet-activityThought</module>
+        <module>TuanPet-activity</module>
+        <module>TuanPet-interaction</module>
     </modules>
 
 

@@ -40,7 +40,7 @@ spring:
             - RewritePath=/api/reminder/(?<segment>/?.*),/$\{segment}
 
         #        活动感想路由
-        - id: reminder_route
+        - id: activityThought_route
           uri: lb://tuanpet-activityThought
           predicates:
             - Path=/activityThought/**
@@ -51,6 +51,33 @@ spring:
             - Path=/api/activityThought/**
           filters:
             - RewritePath=/api/activityThought/(?<segment>/?.*),/$\{segment}
+
+        #        活动路由
+        - id: activity_route
+          uri: lb://tuanpet-activity
+          predicates:
+            - Path=/activity/**
+
+        - id: activity_back_route
+          uri: lb://tuanpet-activity
+          predicates:
+            - Path=/api/activity/**
+          filters:
+            - RewritePath=/api/activity/(?<segment>/?.*),/$\{segment}
+
+
+        #        互动路由
+        - id: interaction_route
+          uri: lb://tuanpet-interaction
+          predicates:
+            - Path=/interaction/**
+
+        - id: interaction_back_route
+          uri: lb://tuanpet-interaction
+          predicates:
+            - Path=/api/interaction/**
+          filters:
+            - RewritePath=/api/interaction/(?<segment>/?.*),/$\{segment}
 
         #        社群路由
         - id: association_route
